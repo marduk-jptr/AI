@@ -1,0 +1,54 @@
+# Импортируем библиотеку numpy для работы с массивами
+import numpy as np
+
+# Функция активации (сигмоида)
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+# Класс простейшей нейронной сети
+class SimpleNeuralNetwork:
+    def __init__(self):
+        # Задаем случайные веса для входного и скрытого слоев
+        self.input_weights = np.random.rand(1)
+        self.hidden_weights = np.random.rand(1)
+
+    def predict(self, x):
+        # Прямой проход (forward pass) по сети
+        hidden_layer_output = sigmoid(x * self.input_weights)
+        output = sigmoid(hidden_layer_output * self.hidden_weights)
+        return output
+
+# Обучающие данные
+data = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+labels = np.array([0, 1, 0, 1, 0, 1, 0, 1, 0, 1])  # 0 - четное, 1 - нечетное
+
+# Создаем экземпляр класса нейронной сети
+model = SimpleNeuralNetwork()
+
+# Тренировка модели
+epochs = 10000
+learning_rate = 0.1
+
+for epoch in range(epochs):
+    for x, label in zip(data, labels):
+        # Прямой проход (forward pass) по сети
+        hidden_layer_output = sigmoid(x * model.input_weights)
+        output = sigmoid(hidden_layer_output * model.hidden_weights)
+
+        # Вычисление ошибки
+        error = label - output
+
+        # Обратное распространение ошибки и коррекция весов
+        d_output = error * output * (1 - output)
+        d_hidden = d_output * model.hidden_weights * hidden_layer_output * (1 - hidden_layer_output)
+
+        # Обновление весов
+        model.hidden_weights += learning_rate * d_output * hidden_layer_output
+        model.input_weights += learning_rate * d_hidden * x
+
+# Проверка работы обученной модели
+test_data = np.array([10, 11, 12])
+for test_input in test_data:
+    prediction = model.predict(test_input)
+    result = "нечетное" if prediction >= 0.5 else "четное"
+    print(f"{test_input} - {result}")
