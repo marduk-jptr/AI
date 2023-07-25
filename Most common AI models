@@ -1,0 +1,19 @@
+GPT-3 (Generative Pre-trained Transformer 3): Developed by OpenAI, this is a massive model trained on a large corpus of text data. GPT-3 is capable of performing various tasks such as text generation, translation, question-answering, dialogue generation, and more.
+
+BERT (Bidirectional Encoder Representations from Transformers): Developed by Google, this is another powerful model capable of understanding the context and meaning of words in the text. BERT has been trained on large text corpora and is successfully applied in various natural language processing tasks, including classification, keyword extraction, question-answering systems, and more.
+
+CNN (Convolutional Neural Network): These models are widely used in computer vision tasks as they are well-suited for image recognition and feature extraction from images.
+
+RNN (Recurrent Neural Network): This type of neural network is used in sequence data processing tasks, such as texts, speech, time series, etc.
+
+Transformer: This is the neural network architecture on which models like GPT are based. It is used in various fields, such as natural language processing and text generation.
+
+LSTM (Long Short-Term Memory): A special type of RNN capable of retaining information about long-term dependencies in sequence data.
+
+RL (Reinforcement Learning): This type of algorithm is used for training agents to interact with an environment and make decisions based on received feedback.
+
+DCGAN (Deep Convolutional Generative Adversarial Network): Used for generating new images using adversarial networks.
+
+VGG (Visual Geometry Group): This is a convolutional neural network architecture often used for image processing tasks.
+
+ResNet (Residual Neural Network): Another popular convolutional neural network architecture that allows building deep models with good performance.
