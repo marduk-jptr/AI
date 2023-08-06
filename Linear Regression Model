@@ -1,0 +1,21 @@
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Пример данных для обучения
+X_train = np.array([[1], [2], [3], [4], [5]])
+y_train = np.array([2, 4, 5, 4, 5])
+
+# Создаем объект линейной регрессии
+regressor = LinearRegression()
+
+# Обучение модели на данных
+regressor.fit(X_train, y_train)
+
+# Пример данных для предсказания
+X_test = np.array([[6], [7]])
+
+# Предсказание значений
+y_pred = regressor.predict(X_test)
+
+print(y_pred)  # Вывод предсказанных значений
+
