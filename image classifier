@@ -1,0 +1,26 @@
+import tensorflow as tf
+import numpy as np
+from tensorflow.keras.applications import MobileNetV2
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input, decode_predictions
+from tensorflow.keras.preprocessing import image
+
+# Загрузка предварительно обученной модели MobileNetV2
+model = MobileNetV2(weights='imagenet')
+
+# Функция для классификации изображения
+def classify_image(image_path):
+    img = image.load_img(image_path, target_size=(224, 224))  # Загрузка изображения и изменение размера
+    img_array = image.img_to_array(img)  # Преобразование изображения в массив numpy
+    img_array = np.expand_dims(img_array, axis=0)  # Добавление измерения пакета
+    img_array = preprocess_input(img_array)  # Предварительная обработка изображения
+
+    predictions = model.predict(img_array)  # Предсказание класса изображения
+    decoded_predictions = decode_predictions(predictions, top=3)[0]  # Декодирование предсказаний
+
+    # Вывод вероятностей для каждой категории
+    for i, (imagenet_id, label, score) in enumerate(decoded_predictions):
+        print(f"{i + 1}: {label} ({score:.2f})")
+
+# Пример использования
+image_path = "example_image.jpg"  # Путь к изображению для классификации
+classify_image(image_path)
